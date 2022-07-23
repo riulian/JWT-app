@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: %i[home] 
   before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users

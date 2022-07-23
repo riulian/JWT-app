@@ -30,5 +30,5 @@ class ApplicationController < ActionController::API
         authorized_user
             
         end
-    end        
+            
 end    
