@@ -54,9 +54,15 @@ class UsersController < ApplicationController
   end
 
   def login
+    #@user = User.first
+    exp = Time.now.to_i + 4 * 3600
+    exp_payload = { data: 'data', exp: exp }
+
     @user = User.find_by(email: user_params[:email])
     if @user && @user.authenticate(user_params[:password])
-      token = encode_token({user_id: @user.id})
+      token = encode_token({user_id: @user.id,exp: exp })
+      
+     
       render json: {user: @user, token: token}, status: :ok
     else
       render json: {error: "Invalid username or password"}, status: :unprocessable_entity  

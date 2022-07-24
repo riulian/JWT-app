@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :books
   get 'users/home'
   post 'users/home'
   post 'users/create'

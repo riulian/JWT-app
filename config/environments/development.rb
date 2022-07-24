@@ -65,7 +65,7 @@ Rails.application.configure do
   #config.hosts << /.+\.ngrok\.io:\d+/
   #config.hosts << /.*\.ngrok\.io/
   #config.hosts << /[a-z0-9]+\.c9users\.io/
-  config.hosts.clear
+  config.hosts.clear #pt a merge postman
   #config.hosts << "hostname" # Whitelist one hostname
   #config.hosts << /application\.local\Z/ # Whitelist a test domain
 end
