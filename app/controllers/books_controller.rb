@@ -4,8 +4,8 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all
-
+    #@books = Book.all
+    @books = @user.books.all #afiseaza cartile pt acest user specific modificare 1
     render json: @books
   end
 
@@ -16,8 +16,8 @@ class BooksController < ApplicationController
 
   # POST /books
   def create
-    @book = Book.new(book_params)
-
+    #@book = Book.new(book_params)
+    @book = Book.new(book_params.merge(user: @user)) # adauga cartea impreuna cu userul current     modificare 2
     if @book.save
       render json: @book, status: :created, location: @book
     else
@@ -42,11 +42,13 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @book = Book.find(params[:id])
+      #@book = Book.find(params[:id])
+      @book = @user.books.find(params[:id]) #modificare 4 ultima
     end
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :user_id)
+      #params.require(:book).permit(:title, :user_id)
+      params.require(:book).permit(:title)  #modificare 3
     end
 end
