@@ -48,3 +48,4 @@ group :development do
 end
 
 gem 'jwt', '~> 2.4', '>= 2.4.1'
+#gem 'neatjson', '~> 0.9'
